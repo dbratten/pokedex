@@ -5,17 +5,13 @@ import {PokeViewComponent} from './poke-view/poke-view.component';
 
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   children: []
-  // },
   {
     path: '',
-    children: [],
-    component: PokedexMainComponent
+    redirectTo: 'pokedex-main',
+    pathMatch: 'full'
   },
   {
-    path: 'pokedex',
+    path: 'pokedex-main',
     children: [],
     component: PokedexMainComponent
   },
