@@ -18,6 +18,7 @@ export class PokemonService {
   }
 
   getPokemon(pokemonId) {
-    console.log(pokemonId);
+    return this.http.get(`${environment.servicesUrl}/pokemon/${pokemonId}`)
+      .catch(error => Observable.throw(error));
   }
 }

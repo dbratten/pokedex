@@ -4,7 +4,7 @@ import {PokemonService} from '../pokemon.service';
 @Component({
   selector: 'app-pokedex-main',
   templateUrl: './pokedex-main.component.html',
-  styleUrls: ['./pokedex-main.component.css']
+  styleUrls: ['./pokedex-main.component.scss']
 })
 export class PokedexMainComponent implements OnInit {
   pokemons: any;

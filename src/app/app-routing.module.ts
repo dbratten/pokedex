@@ -20,7 +20,7 @@ const routes: Routes = [
     component: PokedexMainComponent
   },
   {
-    path: 'poke-view',
+    path: 'poke-view/:id',
     children: [],
     component: PokeViewComponent,
   },
