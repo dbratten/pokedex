@@ -1,13 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import {FormsModule} from "@angular/forms";
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { PokedexMainComponent } from './pokedex-main/pokedex-main.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { PokeViewComponent } from './poke-view/poke-view.component';
-import {HttpModule} from '@angular/http';
-// import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {PokedexMainComponent} from './pokedex-main/pokedex-main.component';
+import {NavbarComponent} from './navbar/navbar.component';
+import {PokeViewComponent} from './poke-view/poke-view.component';
+import {PokemonService} from './pokemon.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,10 +20,10 @@ import {HttpModule} from '@angular/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpModule,
-    // NgbModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [PokemonService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

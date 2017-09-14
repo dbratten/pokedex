@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-// import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import {Component, OnInit} from '@angular/core';
+import {PokemonService} from '../pokemon.service';
 
 @Component({
   selector: 'app-pokedex-main',
@@ -7,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pokedex-main.component.css']
 })
 export class PokedexMainComponent implements OnInit {
+  pokemons: any;
 
-  constructor() { }
+  constructor(private pokemonService: PokemonService) {
+  }
 
   ngOnInit() {
+    this.pokemonService.getPokemonList()
+      .subscribe(pokemons => {
+        this.pokemons = pokemons;
+      });
   }
 
 }

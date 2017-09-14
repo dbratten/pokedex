@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {PokedexMainComponent} from "./pokedex-main/pokedex-main.component";
-import {PokeViewComponent} from "./poke-view/poke-view.component";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {PokedexMainComponent} from './pokedex-main/pokedex-main.component';
+import {PokeViewComponent} from './poke-view/poke-view.component';
 
 
 const routes: Routes = [
