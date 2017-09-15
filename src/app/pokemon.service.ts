@@ -21,4 +21,10 @@ export class PokemonService {
     return this.http.get(`${environment.servicesUrl}/pokemon/${pokemonId}`)
       .catch(error => Observable.throw(error));
   }
+
+  getEvolutions(pokemonId) {
+    return this.http.get(`${environment.servicesUrl}/evolution-chain/${pokemonId}`)
+    .catch(error => Observable.throw(error));
+  }
 }
+;

@@ -19,9 +19,16 @@
           </button>
         </div>
       </div>
+      <div class="card-text">
+      <pre>Evolves at {{this.evolution?.evolves_to[0].evolution_details[0].min_level}}</pre>
+      <pre class="text-capitalize">Into {{this.evolution?.evolves_to[0].species.name}}</pre>
+      <pre>Evolves again at {{this.evolution?.evolves_to[0].evolves_to[0].evolution_details[0].min_level}}</pre>
+        <pre class="text-capitalize">Into {{this.evolution?.evolves_to[0].evolves_to[0].species.name}}</pre>
+
+      </div>
     </div>
   </div>
 </div>
 
-{{pokemon | json}}
+
 
