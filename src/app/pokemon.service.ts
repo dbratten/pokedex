@@ -7,7 +7,6 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class PokemonService {
-
   constructor(private http: HttpClient) {
   }
 
@@ -21,4 +20,21 @@ export class PokemonService {
     return this.http.get(`${environment.servicesUrl}/pokemon/${pokemonId}`)
       .catch(error => Observable.throw(error));
   }
+
+  getSpecies(pokemonId) {
+    return this.http.get(`${environment.servicesUrl}/pokemon-species/${pokemonId}`)
+      .map((data: any) => {
+      console.log(data);
+       return data;
+      })
+      .catch(error => Observable.throw(error));
+  }
+
+  getEvolutions(url) {
+    return this.http.get(url)
+      .catch(error => Observable.throw(error));
+  }
+
+
 }
+

@@ -1,6 +1,7 @@
 <div class="container-fluid justify-content-center">
   <div class="row">
     <div *ngFor="let pokemon of pokemons" class="col-4 mt-5">
+      <pre>{{pokemon | json}}</pre>
       <div class="card border-dark">
         <div class="card-header bg-success">
           <h5 class="d-inline">

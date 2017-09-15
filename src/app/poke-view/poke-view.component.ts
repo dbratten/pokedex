@@ -10,6 +10,8 @@ import {PokemonService} from '../pokemon.service';
 export class PokeViewComponent implements OnInit {
   pokemonId: any;
   pokemon: any;
+  evolution: any;
+  chainUrl: any;
 
   constructor(private route: ActivatedRoute,
               private pokemonService: PokemonService) {
@@ -21,6 +23,19 @@ export class PokeViewComponent implements OnInit {
       this.pokemonService.getPokemon(params.id)
         .subscribe(pokemon => {
           this.pokemon = pokemon;
+          this.pokemonService.getSpecies(this.pokemon.id).subscribe(
+            data => {
+              this.chainUrl = data.evolution_chain.url;
+              console.log(data);
+              this.pokemonService.getEvolutions(this.chainUrl)
+                .subscribe(evolution => {
+                  this.evolution = evolution.chain;
+                });
+            },
+            error => {
+              console.log(error);
+            }
+          );
         });
     });
 
