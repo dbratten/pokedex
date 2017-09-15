@@ -1,9 +1,103 @@
 @import '~bootstrap/scss/bootstrap';
 
-.bg-bug {
-  background-color: green;
+
+//Types
+.bg-normal{
+  background-color: lightgray;
+}
+
+.bg-fighting{
+  background-color: #C03028;
+  color: white;
 }
 
 .bg-flying {
-  background-color: skyblue;
+  background-color: #92defb;
+  color: white;
+}
+
+.bg-poison{
+  background-color: #5a3696;
+  color: white;
+}
+
+.bg-ground{
+  background-color: #eeb775;
+  color: white;
+}
+
+.bg-rock{
+  background-color: #565656;
+  color: white;
+}
+
+.bg-bug {
+  background-color: #A8B820;
+  color: white;
+}
+
+.bg-ghost{
+  background-color: rgba(82, 63, 111, 0.59);
+  color: white;
+}
+
+.bg-steel{
+  background-color: rgba(176, 176, 176, 0.61);
+  color: white;
+}
+
+.bg-fire{
+  background-color: rgba(238, 50, 0, 0.87);
+  color: white;
+}
+
+.bg-water{
+  background-color: dodgerblue;
+  color: white;
+}
+
+.bg-grass{
+  background-color: #40b868;
+  color: white;
+
+}
+
+.bg-electric{
+  background-color: #FAE078;
+  color: white;
+}
+
+.bg-psychic{
+  background-color: rgba(199, 70, 111, 0.99);
+  color: white;
+}
+
+.bg-ice{
+  background-color: #98D8D8;
+  color: white;
+}
+
+.bg-dragon{
+  background-color: #7038f8;
+  color: white;
+}
+
+.bg-dark{
+  background-color: #705848;
+  color: white;
+}
+
+.bg-fairy{
+  background-color: #e898e8;
+  color: white;
+}
+
+.bg-unknown{
+  background-color: black;
+  color: white;
+}
+
+.bg-shadow{
+  background-color: rgba(74, 68, 83, 0.5);
+  color: white;
 }

@@ -4,8 +4,8 @@
       <div class="card border-dark">
         <div class="card-header bg-success">
           <h5 class="d-inline">
-            <a class="text-white" [routerLink]="['/poke-view', pokemon.url.split('/')[pokemon.url.split('/').length - 2]]"> {{pokemon.name}}</a>
-            <h6 class="d-inline">No. # {{pokemon.url.split('/')[pokemon.url.split('/').length - 2]}}</h6>
+            <a class="text-white text-capitalize" [routerLink]="['/poke-view', pokemon.url.split('/')[pokemon.url.split('/').length - 2]]"> {{pokemon.name}}</a>
+            <h6 class="d-inline text-white">No. {{pokemon.url.split('/')[pokemon.url.split('/').length - 2]}}</h6>
           </h5>
           <label class="custom-control custom-checkbox float-right d-inline p-0 pr-2">
             <input type="checkbox" class="custom-control-input">
@@ -17,7 +17,7 @@
           <div class="row pt-2">
             <div class="col-3">
               <img
-                src="../../assets/sprites/sprites/pokemon/{{pokemon.url.split('/')[pokemon.url.split('/').length - 2]}}.png"
+                src="../../assets/sprites/sprites/sprites/pokemon/{{pokemon.url.split('/')[pokemon.url.split('/').length - 2]}}.png"
                 class="align-content-around"
                 height="100px"
                 width="100px"/>
