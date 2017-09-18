@@ -1,14 +1,15 @@
 <div class="container-fluid justify-content-center">
   <div class="row">
     <div class="card" style="width: 20rem;">
-      <img class="card-img-top" src="../../assets/sprites/sprites/sprites/pokemon/other-sprites/official-artwork/{{pokemonId}}.png"
+      <img class="card-img-top"
+           src="../../assets/sprites/sprites/sprites/pokemon/other-sprites/official-artwork/{{pokemonId}}.png"
            alt="{{pokemon.name}}">
     </div>
     <div class="card">
       <div class="card-header">
         <h4 class="card-title">
           <a class="text-capitalize"> {{pokemon.name}}</a>
-          <h6 class="d-inline">No. # {{pokemonId}}</h6>
+          <h6 class="d-inline">No. {{pokemonId}}</h6>
         </h4>
       </div>
       <div class="card-block">
@@ -19,15 +20,26 @@
           </button>
         </div>
       </div>
-      <div class="card-text">
-      <pre>Evolves at {{this.evolution?.evolves_to[0].evolution_details[0].min_level}}</pre>
-      <pre class="text-capitalize">Into {{this.evolution?.evolves_to[0].species.name}}</pre>
-      <pre>Evolves again at {{this.evolution?.evolves_to[0].evolves_to[0].evolution_details[0].min_level}}</pre>
-        <pre class="text-capitalize">Into {{this.evolution?.evolves_to[0].evolves_to[0].species.name}}</pre>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="card col-6">
+      <div class="card-block">
+        <div class="card-text">
+          <h5>Evolutions</h5>
+          <div class="card-text">
+            <h5 class="text-capitalize">{{evolution?.species.name}}</h5>
+
+            <h5>{{evolution?.evolves_to[0].evolution_details[0].min_level}}</h5>
+            <h5 class="text-capitalize">{{evolution?.evolves_to[0].species.name}}</h5>
+            <img class="card-img-top"
+                 src="../../assets/sprites/sprites/sprites/pokemon/other-sprites/official-artwork/{{evolution?.evolves_to[0]?.species.url.split('/')[6]}}.png">
+            <h5>{{evolution?.evolves_to[0].evolves_to[0].evolution_details[0].min_level}}</h5>
+            <h5 class="text-capitalize">{{evolution?.evolves_to[0].evolves_to[0].species.name}}</h5>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-
