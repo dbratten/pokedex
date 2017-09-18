@@ -10,26 +10,32 @@ import {PokemonService} from '../pokemon.service';
 export class PokeViewComponent implements OnInit {
   pokemonId: any;
   pokemon: any;
-  evolution: any;
+  evolutions: any;
   chainUrl: any;
+  pokemonType: any;
 
   constructor(private route: ActivatedRoute,
               private pokemonService: PokemonService) {
   }
 
   ngOnInit() {
+    const weaknessChart = this.pokemonService.weaknessChart;
     this.pokemon = this.route.params.subscribe(params => {
       this.pokemonId = params.id;
       this.pokemonService.getPokemon(params.id)
         .subscribe(pokemon => {
           this.pokemon = pokemon;
+          this.pokemonType = weaknessChart.find(type => type.name.toLowerCase() === this.pokemon.types[0].type.name.toLowerCase());
+          console.log(this.pokemonType);
           this.pokemonService.getSpecies(this.pokemon.id).subscribe(
             data => {
               this.chainUrl = data.evolution_chain.url;
-              console.log(data);
               this.pokemonService.getEvolutions(this.chainUrl)
                 .subscribe(evolution => {
-                  this.evolution = evolution.chain;
+                  const pokemon = {};
+                  Object.assign(pokemon, evolution.chain.species);
+                  this.evolutions = [pokemon];
+                  this.buildEvolutionTree(evolution.chain);
                 });
             },
             error => {
@@ -38,7 +44,18 @@ export class PokeViewComponent implements OnInit {
           );
         });
     });
+  }
 
+  buildEvolutionTree(evolution) {
+    if (evolution.evolves_to[0]) {
+      const pokemon = {};
+      Object.assign(pokemon, evolution.evolves_to[0].species);
+      Object.assign(pokemon, evolution.evolves_to[0].evolution_details[0]);
+      this.evolutions.push(pokemon);
+      this.buildEvolutionTree(evolution.evolves_to[0]);
+    } else {
+      return;
+    }
   }
 
 }
