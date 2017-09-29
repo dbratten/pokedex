@@ -8,6 +8,7 @@ import {PokemonService} from '../pokemon.service';
   styleUrls: ['./poke-view.component.scss']
 })
 export class PokeViewComponent implements OnInit {
+  description: any;
   pokemonId: any;
   pokemon: any;
   evolutions: any;
@@ -29,6 +30,8 @@ export class PokeViewComponent implements OnInit {
           console.log(this.pokemonType);
           this.pokemonService.getSpecies(this.pokemon.id).subscribe(
             data => {
+              this.description = data.flavor_text_entries.filter(
+                version => version.version.name === 'y' && version.language.name === 'en')[0];
               this.chainUrl = data.evolution_chain.url;
               this.pokemonService.getEvolutions(this.chainUrl)
                 .subscribe(evolution => {
