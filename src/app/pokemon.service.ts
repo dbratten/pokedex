@@ -35,6 +35,8 @@ export class PokemonService {
       .catch(error => Observable.throw(error));
   }
 
+
+
   weaknessChart =
     [{"name": "Normal", "immunes": ["Ghost"], "weaknesses": ["Rock", "Steel"], "strengths": []},
       {

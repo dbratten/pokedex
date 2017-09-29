@@ -25,6 +25,7 @@ export class PokeViewComponent implements OnInit {
       this.pokemonId = params.id;
       this.pokemonService.getPokemon(params.id)
         .subscribe(pokemon => {
+          console.log(pokemon);
           this.pokemon = pokemon;
           this.pokemonType = weaknessChart.find(type => type.name.toLowerCase() === this.pokemon.types[0].type.name.toLowerCase());
           console.log(this.pokemonType);
