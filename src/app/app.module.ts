@@ -21,6 +21,8 @@ import {HttpClientModule} from '@angular/common/http';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    
+    
   ],
   providers: [PokemonService],
   bootstrap: [AppComponent]

@@ -1,15 +1,15 @@
-<div class="row">
+<!-- <div class="row">
   <nav>
     <ul class="pagination">
       <li class="page-item">
-        <a class="previous" href="/poke-view/{{pokemonId - 1}}">Previous</a>
+        <a class="previous" href="/poke-view/{{pokemonId - 1}}" tabindex="-1">Previous</a>
       </li>
       <li class="page-item">
-        <a class="next"  href="/poke-view/{{pokemonId +1 }}">Next</a>
+        <a class="next"  href="/poke-view/{{pokemonId + 1}}">Next</a>
       </li>
     </ul>
   </nav>
-</div>
+</div> -->
 
 <div class="container-fluid d-inline">
   <div class="row">
@@ -37,13 +37,11 @@
               class="btn text-capitalize bg-{{weakness.toLowerCase()}} p-1 ml-1">{{weakness}}
       </button>
     </div>
-  </div>
-</div>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-3" *ngFor="let stat of pokemon.stats">
-       <pre>{{stat | json}}</pre>
+    <div class="col-lg-4">
+    <div class="d-inline" *ngFor="let stat of pokemon.stats">
+        <h6>{{stat.stat.name}}</h6>
+        <p><ngb-progressbar type="success" [value]="25" [max]="200"></ngb-progressbar></p>
+      </div><h6>{{stat.base_stat}}</h6>
     </div>
   </div>
 </div>
