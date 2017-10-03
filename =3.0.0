@@ -1,4 +1,4 @@
-pokedex@0.0.0 D:\webstorm\pokedex
-+-- jquery@3.2.1 
-`-- UNMET PEER DEPENDENCY popper.js@^1.11.0
+pokedex@0.0.0 /home/programmer/workspaces/pokedex
+├── jquery@3.2.1 
+└── UNMET DEPENDENCY popper.js@^1.12.5
 

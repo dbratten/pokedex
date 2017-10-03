@@ -8,6 +8,7 @@ import {NavbarComponent} from './navbar/navbar.component';
 import {PokeViewComponent} from './poke-view/poke-view.component';
 import {PokemonService} from './pokemon.service';
 import {HttpClientModule} from '@angular/common/http';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,9 @@ import {HttpClientModule} from '@angular/common/http';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    
-    
+    NgbModule.forRoot()
+
+
   ],
   providers: [PokemonService],
   bootstrap: [AppComponent]
