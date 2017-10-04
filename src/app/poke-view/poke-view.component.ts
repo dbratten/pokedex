@@ -23,12 +23,10 @@ export class PokeViewComponent implements OnInit {
     const weaknessChart = this.pokemonService.weaknessChart;
     this.pokemon = this.route.params.subscribe(params => {
       this.pokemonId = Number(params.id);
-          this.pokemonService.getPokemon(params.id)
+      this.pokemonService.getPokemon(params.id)
         .subscribe(pokemon => {
-          console.log(pokemon);
           this.pokemon = pokemon;
           this.pokemonType = weaknessChart.find(type => type.name.toLowerCase() === this.pokemon.types[0].type.name.toLowerCase());
-          console.log(this.pokemonType);
           this.pokemonService.getSpecies(this.pokemon.id).subscribe(
             data => {
               this.description = data.flavor_text_entries.filter(
@@ -41,9 +39,6 @@ export class PokeViewComponent implements OnInit {
                   this.evolutions = [pokemon];
                   this.buildEvolutionTree(evolution.chain);
                 });
-            },
-            error => {
-              console.log(error);
             }
           );
         });
@@ -51,65 +46,17 @@ export class PokeViewComponent implements OnInit {
   }
 
   buildEvolutionTree(evolution) {
-    if (evolution.evolves_to) {
+    console.log(evolution);
+    evolution.evolves_to.forEach(e => {
       const pokemon = {};
-      Object.assign(pokemon, evolution.evolves_to[0].species);
-      Object.assign(pokemon, evolution.evolves_to[0].evolution_details[0]);
+      Object.assign(pokemon, e.species);
+      Object.assign(pokemon, e.evolution_details[0]);
       this.evolutions.push(pokemon);
+    });
+
+    console.log(evolution);
+    if (evolution && evolution.evolves_to.length) {
       this.buildEvolutionTree(evolution.evolves_to[0]);
-    } 
-
-  //  evolution.evolves_to.forEach(pokemon => pokemon)
+    }
   }
-    // if (evolution.evolves_to[1]){
-    //   const pokemon = {};
-    //   Object.assign(pokemon, evolution.evolves_to[1].species);
-    //   Object.assign(pokemon, evolution.evolves_to[1].evolution_details[0]);
-    //   this.evolutions.push(pokemon);
-    //   this.buildEvolutionTree(evolution.evolves_to[0]);
-    // }
-    // if (evolution.evolves_to[2]){
-    //   const pokemon = {};
-    //   Object.assign(pokemon, evolution.evolves_to[2].species);
-    //   Object.assign(pokemon, evolution.evolves_to[2].evolution_details[0]);
-    //   this.evolutions.push(pokemon);
-    //   this.buildEvolutionTree(evolution.evolves_to[0]);
-    // }
-    // if (evolution.evolves_to[3]){
-    //   const pokemon = {};
-    //   Object.assign(pokemon, evolution.evolves_to[3].species);
-    //   Object.assign(pokemon, evolution.evolves_to[3].evolution_details[0]);
-    //   this.evolutions.push(pokemon);
-    //   this.buildEvolutionTree(evolution.evolves_to[0]);
-    // }
-    // if (evolution.evolves_to[4]){
-    //   const pokemon = {};
-    //   Object.assign(pokemon, evolution.evolves_to[4].species);
-    //   Object.assign(pokemon, evolution.evolves_to[4].evolution_details[0]);
-    //   this.evolutions.push(pokemon);
-    //   this.buildEvolutionTree(evolution.evolves_to[0]);
-    // }
-    // if (evolution.evolves_to[5]){
-    //   const pokemon = {};
-    //   Object.assign(pokemon, evolution.evolves_to[5].species);
-    //   Object.assign(pokemon, evolution.evolves_to[5].evolution_details[0]);
-    //   this.evolutions.push(pokemon);
-    //   this.buildEvolutionTree(evolution.evolves_to[0]);
-    // }
-    // if (evolution.evolves_to[6]){
-    //   const pokemon = {};
-    //   Object.assign(pokemon, evolution.evolves_to[6].species);
-    //   Object.assign(pokemon, evolution.evolves_to[6].evolution_details[0]);
-    //   this.evolutions.push(pokemon);
-    //   this.buildEvolutionTree(evolution.evolves_to[0]);
-    // }
-    // if (evolution.evolves_to[7]){
-    //   const pokemon = {};
-    //   Object.assign(pokemon, evolution.evolves_to[7].species);
-    //   Object.assign(pokemon, evolution.evolves_to[7].evolution_details[0]);
-    //   this.evolutions.push(pokemon);
-    //   this.buildEvolutionTree(evolution.evolves_to[0]);
-    // }
-  
-
 }
