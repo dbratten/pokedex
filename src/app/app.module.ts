@@ -24,7 +24,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     NgbModule.forRoot()
 
-
   ],
   providers: [PokemonService],
   bootstrap: [AppComponent]

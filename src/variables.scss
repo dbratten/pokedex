@@ -1,0 +1,240 @@
+$fa-font-path: "../../assets/fonts/fontawesome";
+$test-color: #be3572;
+
+/* Worklist Colors -- https://color.hailpixel.com/#B8EDDB,F8DDD4,F9F4C1 */
+
+$complete: #B8EDDB;
+$hold: #F8DDD4;
+$claimed: #F9EFC1;
+$shared: #E6D9F2;
+
+/* Dashboard Colors -- https://color.hailpixel.com/#EF4836,F37365,BE90D4,00B7D8,6ACAB3,27AE60,D0D0D0,E5E5E5 */
+$imaging-color: #EF4836;
+$skuShoppingExceptions-color: #F37365;
+$setup-color: #BE90D4;
+$publishing-color: #6ACAB3;
+$complete-color: #27AE60;
+$empty-color: #D0D0D0;
+$secondaryChart-color: #E5E5E5;
+
+/* Imaging Colors -- https://color.hailpixel.com/#A2DED0,FBD785,EF8B80,96A0AC */
+$loaded-color: #A2DED0;
+$ignored-color: #FBD785;
+$canceled-color: #EF8B80;
+$pending-color: #96A0AC;
+$hexbutton-color: #FAFAFA;
+
+/* Special Colors */
+$cindy-kState: #512888;
+
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+$grays: (
+  100: $gray-100,
+  200: $gray-200,
+  300: $gray-300,
+  400: $gray-400,
+  500: $gray-500,
+  600: $gray-600,
+  700: $gray-700,
+  800: $gray-800,
+  900: $gray-900
+) !default;
+
+$blue: #007bff !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #dc3545 !default;
+$orange: #fd7e14 !default;
+$yellow: #ffc107 !default;
+$green: #28a745 !default;
+$teal: #20c997 !default;
+$cyan: #17a2b8 !default;
+
+$colors: (
+  blue: $blue,
+  indigo: $indigo,
+  purple: $purple,
+  pink: $pink,
+  red: $red,
+  orange: $orange,
+  yellow: $yellow,
+  green: $green,
+  teal: $teal,
+  cyan: $cyan,
+  white: $white,
+  gray: $gray-600,
+  gray-dark: $gray-800
+) !default;
+
+// Colors
+
+$theme-colors: (
+  primary: #1B1132,
+  secondary: #3d4351,
+  success: $green,
+  info: $cyan,
+  warning: $yellow,
+  danger: $red,
+  light: $gray-100,
+  white: #FFF,
+  normal: lightgray,
+  fighting: #C03028,
+  flying: #92defb,
+  poison: #5a3696,
+  ground: #eeb775,
+  rock: #565656,
+  bug: #A8B820,
+  ghost: rgba(82, 63, 111, 0.59),
+  steel: rgba(176, 176, 176, 0.61),
+  fire: rgba(238, 50, 0, 0.87),
+  water: dodgerblue,
+  grass: #40b868,
+  electric: #FAE078,
+  psychic:  rgba(199, 70, 111, 0.99),
+  ice: #98D8D8,
+  dragon: #7038f8,
+  dark: #705848,
+  fairy: #e898e8,
+  unknown: black,
+  shadow: rgba(74, 68, 83, 0.5)
+
+
+  
+) !default;
+
+// Miscellaneous
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg) translateY(-100px) rotate(0deg);
+  }
+  70% {
+    transform: rotate(360deg) translateY(-100px) rotate(-360deg);
+  }
+}
+
+.truncate {
+  @extend %ellipsis;
+}
+
+%ellipsis {
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin dashboard {
+  @each $panel in map-keys($colorMap) {
+    ##{$panel}Panel {
+      .panel-heading {
+        background-color: lighten(map-get($colorMap, $panel), 5%) !important;
+      }
+      .ct-label.ct-horizontal {
+        text-align: center;
+        font-size: 14px;
+        @extend %ellipsis;
+      }
+      .ct-label.ct-vertical {
+        display: flex;
+        align-items: flex-end;
+        font-size: 14px;
+      }
+      @if $panel != "summary" {
+        .ct-target-line {
+          stroke: map-get($colorMap, $panel);
+          stroke-width: 1px;
+        }
+        .ct-series-a line {
+          stroke: map-get($colorMap, $panel);
+          @include transition(0.25s);
+          &:hover {
+            stroke: lighten(map-get($colorMap, $panel), 20%);
+          }
+        }
+        .ct-series-b line {
+          stroke: lighten(map-get($colorMap, $panel), 20%);
+        }
+        .ct-series-c line {
+          stroke: $lightest-grey;
+        }
+      }
+      @if $panel == "summary" {
+        @each $type in map-keys($dashboardSummaryList) {
+          .ct-series-#{$type} line {
+            stroke: map-get($dashboardSummaryList, $type);
+            @include transition(0.25s);
+            &:hover {
+              stroke: lighten(map_get($dashboardSummaryList, $type), 20%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+/* Popup Tools */
+@mixin popup-tools($tool-name) {
+  .#{$tool-name} {
+    position: fixed;
+    right: 150px;
+    bottom: -3px;
+    transition: all linear 0.5s;
+    .#{$tool-name}-container {
+      position: absolute;
+      bottom: 0%;
+      right: 75px;
+      width: 150px;
+      height: 35px;
+      background: theme-color('primary');
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      cursor: pointer;
+      .header {
+        width: 100%;
+        display: block;
+        color: #fff;
+        font-size: 16px;
+        line-height: 32px;
+        transition: 0.2s;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        &:hover {
+          background-color: theme-color('primary');
+        }
+      }
+      .#{$tool-name}-body {
+        opacity: 0;
+        @if $tool-name == "feedback" {
+          width: 300px;
+        } @else {
+          width: 800px;
+        }
+        background-color: $white;
+        border: 1px solid #BBB;
+        padding: 10px 15px;
+        textarea {
+          margin-bottom: 5px;
+        }
+        transition: all linear 0.3s;
+      }
+      .#{$tool-name}-body.visible {
+        opacity: 1;
+      }
+    }
+  }
+}

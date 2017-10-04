@@ -22,8 +22,8 @@ export class PokeViewComponent implements OnInit {
   ngOnInit() {
     const weaknessChart = this.pokemonService.weaknessChart;
     this.pokemon = this.route.params.subscribe(params => {
-      this.pokemonId = params.id;
-      this.pokemonService.getPokemon(params.id)
+      this.pokemonId = Number(params.id);
+          this.pokemonService.getPokemon(params.id)
         .subscribe(pokemon => {
           console.log(pokemon);
           this.pokemon = pokemon;
@@ -51,15 +51,65 @@ export class PokeViewComponent implements OnInit {
   }
 
   buildEvolutionTree(evolution) {
-    if (evolution.evolves_to[0]) {
+    if (evolution.evolves_to) {
       const pokemon = {};
       Object.assign(pokemon, evolution.evolves_to[0].species);
       Object.assign(pokemon, evolution.evolves_to[0].evolution_details[0]);
       this.evolutions.push(pokemon);
       this.buildEvolutionTree(evolution.evolves_to[0]);
-    } else {
-      return;
-    }
+    } 
+
+  //  evolution.evolves_to.forEach(pokemon => pokemon)
   }
+    // if (evolution.evolves_to[1]){
+    //   const pokemon = {};
+    //   Object.assign(pokemon, evolution.evolves_to[1].species);
+    //   Object.assign(pokemon, evolution.evolves_to[1].evolution_details[0]);
+    //   this.evolutions.push(pokemon);
+    //   this.buildEvolutionTree(evolution.evolves_to[0]);
+    // }
+    // if (evolution.evolves_to[2]){
+    //   const pokemon = {};
+    //   Object.assign(pokemon, evolution.evolves_to[2].species);
+    //   Object.assign(pokemon, evolution.evolves_to[2].evolution_details[0]);
+    //   this.evolutions.push(pokemon);
+    //   this.buildEvolutionTree(evolution.evolves_to[0]);
+    // }
+    // if (evolution.evolves_to[3]){
+    //   const pokemon = {};
+    //   Object.assign(pokemon, evolution.evolves_to[3].species);
+    //   Object.assign(pokemon, evolution.evolves_to[3].evolution_details[0]);
+    //   this.evolutions.push(pokemon);
+    //   this.buildEvolutionTree(evolution.evolves_to[0]);
+    // }
+    // if (evolution.evolves_to[4]){
+    //   const pokemon = {};
+    //   Object.assign(pokemon, evolution.evolves_to[4].species);
+    //   Object.assign(pokemon, evolution.evolves_to[4].evolution_details[0]);
+    //   this.evolutions.push(pokemon);
+    //   this.buildEvolutionTree(evolution.evolves_to[0]);
+    // }
+    // if (evolution.evolves_to[5]){
+    //   const pokemon = {};
+    //   Object.assign(pokemon, evolution.evolves_to[5].species);
+    //   Object.assign(pokemon, evolution.evolves_to[5].evolution_details[0]);
+    //   this.evolutions.push(pokemon);
+    //   this.buildEvolutionTree(evolution.evolves_to[0]);
+    // }
+    // if (evolution.evolves_to[6]){
+    //   const pokemon = {};
+    //   Object.assign(pokemon, evolution.evolves_to[6].species);
+    //   Object.assign(pokemon, evolution.evolves_to[6].evolution_details[0]);
+    //   this.evolutions.push(pokemon);
+    //   this.buildEvolutionTree(evolution.evolves_to[0]);
+    // }
+    // if (evolution.evolves_to[7]){
+    //   const pokemon = {};
+    //   Object.assign(pokemon, evolution.evolves_to[7].species);
+    //   Object.assign(pokemon, evolution.evolves_to[7].evolution_details[0]);
+    //   this.evolutions.push(pokemon);
+    //   this.buildEvolutionTree(evolution.evolves_to[0]);
+    // }
+  
 
 }
