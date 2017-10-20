@@ -35,6 +35,7 @@
               class="attributeButton btn text-capitalize text-white bg-{{weakness.toLowerCase()}} mt-2 ml-1">
         {{weakness}}
       </button>
+      <pre>{{pokemon?.abilities[0].ability.name | json}}</pre>
     </div>
 
 
@@ -47,18 +48,20 @@
 
     <div class="container bg-primary text-white rounded mt-5">
       <div class="row">
-        <div class="col-lg-12 text-white mt-3">
+        <div class="col-lg-10 text-white mt-3">
           <h3>Evolution</h3>
         </div>
       </div>
       <div class="row justify-content-center text-center pt-2 ">
         <ng-template ngFor [ngForOf]="evolutions" let-evolution let-l="last">
-          <div class="col-lg-3">
-            <img class="sprite" height="150" width="150"
+          <div class="col-lg-2">
+            <a href="/poke-view/{{evolution?.url.split('/')[6]}}">
+                <img class="sprite" height="150" width="150"
                  src="../../assets/sprites/pokemon/other-sprites/official-artwork/{{evolution?.url.split('/')[6]}}.png">
+            </a>
             <h4 class="text-capitalize">{{evolution?.name}}</h4>
             <p>{{evolution?.min_level}}</p>
-            <p>{{evolution?.trigger?.name}}</p>
+            <p *ngIf="evolution?.trigger?.name !== 'level-up' && evolution?.trigger?.name !=='use-item'">{{evolution?.trigger?.name}}</p>
             <p>{{evolution?.item?.name}}</p>
           </div>
           <div class="col-lg-1" *ngIf="!l">
